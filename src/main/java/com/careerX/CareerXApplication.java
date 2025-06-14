@@ -1,13 +1,13 @@
-package com.loveai;
+package com.careerX;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LoveAiApplication {
+public class CareerXApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LoveAiApplication.class, args);
+        SpringApplication.run(CareerXApplication.class, args);
     }
 
 }

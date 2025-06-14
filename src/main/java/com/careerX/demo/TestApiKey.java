@@ -1,4 +1,4 @@
-package com.loveai.demo;
+package com.careerX.demo;
 
 public interface TestApiKey {
 

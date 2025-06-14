@@ -1,4 +1,4 @@
-package com.loveai.demo.invoke;
+package com.careerX.demo.invoke;
 
 import jakarta.annotation.Resource;
 import org.springframework.ai.chat.messages.AssistantMessage;
@@ -16,7 +16,7 @@ public class OllamaAiInvoke implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        AssistantMessage output = ollamaChatModel.call(new Prompt("你好，我是鱼皮"))
+        AssistantMessage output = ollamaChatModel.call(new Prompt("你好，我是CareerX"))
                 .getResult()
                 .getOutput();
         System.out.println(output.getText());

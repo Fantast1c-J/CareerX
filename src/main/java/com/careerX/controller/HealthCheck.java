@@ -1,4 +1,4 @@
-package com.loveai.controller;
+package com.careerX.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

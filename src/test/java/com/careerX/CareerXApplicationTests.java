@@ -1,10 +1,10 @@
-package com.loveai;
+package com.careerX;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LoveAiApplicationTests {
+class CareerXApplicationTests {
 
     @Test
     void contextLoads() {
