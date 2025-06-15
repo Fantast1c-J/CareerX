@@ -37,5 +37,12 @@ class CareerXTest {
         String message = "你好，我是余生军，我想找一份工作，但我不知道该怎么做";
         Assertions.assertNotNull(CareerXApp.doChatWithReport(message, chatId));
     }
+    @Test
+    void doChatWithRag() {
+        String chatId = UUID.randomUUID().toString();
+        String message = "我是25届应届毕业生，我还没有找到工作，怎么办？";
+        String answer =  CareerXApp.doChatWithRag(message, chatId);
+        Assertions.assertNotNull(answer);
+    }
 
 }

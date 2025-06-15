@@ -1,6 +1,6 @@
 spring:
   application:
-    name: love-ai
+    name: career-X
   profiles:
     active: local
   ai:
@@ -29,9 +29,13 @@ springdoc:
   group-configs:
     - group: 'default'
       paths-to-match: '/**'
-      packages-to-scan: com.loveai.controller
+      packages-to-scan: com.careerX.controller
 # knife4j
 knife4j:
   enable: true
   setting:
     language: zh_cn
+#自定义日志advisor
+logging:
+  level:
+    org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
