@@ -2,17 +2,16 @@ package com.careerX.app;
 
 import com.careerX.advisor.MyLoggerAdvisor;
 import com.careerX.chatmemory.FileBasedChatMemory;
+import com.careerX.rag.QueryRewriter;
 import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
-import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.client.advisor.api.Advisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -86,9 +85,10 @@ public class CareerXApp {
                     "> 18:00前：学习SiC器件失效分析课（含模拟测试入口）  \n" +
                     "> \uD83D\uDD52 明日09:00主动向我汇报进度！";
     @Resource
-    private VectorStore careerAppVectorStore;
-    @Resource
     private Advisor careerAppRagCloudAdvisor;
+
+    @Resource
+    private QueryRewriter queryRewriter;
     public CareerXApp(ChatModel dashscopeChatModel) {
         // 初始化基于内存的对话记忆
         /*ChatMemory chatMemory = new InMemoryChatMemory();
@@ -135,10 +135,13 @@ public class CareerXApp {
     record CareerReport(String title, List<String> suggestions) {
     }
     public CareerReport doChatWithReport(String message, String chatId) {
+        //查询重写后的信息
+        String rewriteMessage  = queryRewriter.doQueryRewrite(message);
+
         CareerReport careerReport = chatClient
                 .prompt()
                 .system(SYSTEM_PROMPT + "每次对话后都要生成求职咨询结果，标题为{用户名}的求职咨询报告，内容为建议列表")
-                .user(message)
+                .user(rewriteMessage)
                 .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
                         .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
                 .call()

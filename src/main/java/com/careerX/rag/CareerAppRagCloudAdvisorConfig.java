@@ -1,4 +1,4 @@
-package com.careerX.config;
+package com.careerX.rag;
 
 import com.alibaba.cloud.ai.dashscope.api.DashScopeApi;
 import com.alibaba.cloud.ai.dashscope.rag.DashScopeDocumentRetriever;
@@ -21,7 +21,7 @@ class CareerAppRagCloudAdvisorConfig {
     @Bean
     public Advisor careerAppRagCloudAdvisor() {
         DashScopeApi dashScopeApi = new DashScopeApi(dashScopeApiKey);
-        final String KNOWLEDGE_INDEX = "就业";
+        final String KNOWLEDGE_INDEX = "CareerX(无限事业)";
         DocumentRetriever documentRetriever = new DashScopeDocumentRetriever(dashScopeApi,
                 DashScopeDocumentRetrieverOptions.builder()
                         .withIndexName(KNOWLEDGE_INDEX)
